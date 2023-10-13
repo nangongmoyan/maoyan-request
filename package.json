@@ -17,9 +17,10 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "changeset": "changeset",
+    "version": "changeset version && pnpm install"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -53,6 +54,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@changesets/cli": "^2.26.2",
     "axios": "^1.2.0-alpha.1"
   }
 }
