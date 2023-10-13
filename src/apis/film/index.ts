@@ -11,7 +11,7 @@ export const filmApi = {
     const rlt = await apiRequest.get('', {
       params: vo
     })
-
+console.log({rlt})
     return rlt
   }
 }
