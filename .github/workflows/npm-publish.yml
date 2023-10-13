@@ -1,0 +1,43 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Node.js Package
+
+# 触发时机，在 main 分支 push 操作触发
+on:
+  push:
+    branches:
+      - main
+
+# 默认shell
+defaults:
+  run:
+    shell: bash
+
+# 任务，定义个publish 的任务
+jobs:
+  publish:
+    # name:Changelog PR or Release
+    # 这里判断仓库owner是否是我自己，为了避免别人 fork 仓库触发，请自行修改
+    # if: ${{ github.repository_owner == 'nangongmoyan' }}
+    runs-on: ubuntu-latest
+    steps:
+      # name:  当前 step 的名字
+      - name: Checkout code # 获取分支的代码和提交记录
+        uses: actions/checkout@v3
+
+      # 设置 Node
+      - name: Setup Node.js v18 # 设置 Node.js 的环境
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          # cache: 'npm'
+
+      # 安装依赖
+      - name: Install dependencies
+        run: npm install
+
+      - name: Publish to npm
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
