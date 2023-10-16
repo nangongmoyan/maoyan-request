@@ -8,10 +8,10 @@ export const filmApi = {
    * @returns 
    */
   getHotFilm: async(vo: Film.Hot.Request)=>{
-    const rlt = await apiRequest.get('', {
+    const rlt = await apiRequest.get('/mmdb/movie/v4/list/hot.json', {
       params: vo
     })
-console.log({rlt})
+    console.log({rlt})
     return rlt
   }
 }
