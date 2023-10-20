@@ -12,7 +12,7 @@ class Request {
     /** 全局响应拦截器保证最后执行 */
     this.instance.interceptors.response.use(
       (res: AxiosResponse) => {
-        return res.data
+        return res.data.data
       },
       (error: any) => error
     )
