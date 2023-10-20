@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios"
-import { CreateRequestConfig, RequestConfig } from "./type"
+import {  RequestConfig } from "./type"
 
 class Request {
 

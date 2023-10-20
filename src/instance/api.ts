@@ -1,15 +1,12 @@
 import Request from "../request";
-import { config } from "../config";
+import { maoYan } from "../maoyan";
 import { RequestConfig } from "../request/type";
 
 interface ApiRequestConfig<T,R> extends RequestConfig<R>{
   vo?: T
 }
 
-export const apiInstance = new Request({
-  baseURL: config.host.api,
-  timeout: 1000 * 20,
-})
+export const apiInstance = new Request(maoYan)
 
 /**
  * @description: 函数的描述
