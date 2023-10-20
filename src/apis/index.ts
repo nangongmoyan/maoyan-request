@@ -1,1 +1,7 @@
 export * from './film'
+export * from './show'
+export * from './ticket'
+export * from './carousel'
+export * from './screening'
+export * from './waterfall'
+export * from './attraction'
