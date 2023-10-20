@@ -1,5 +1,11 @@
 # maoyan-request
 
+## 0.3.1
+
+### Patch Changes
+
+- f326a94: add demo
+
 ## 0.3.0
 
 ### Minor Changes
