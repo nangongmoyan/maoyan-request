@@ -1,5 +1,11 @@
 # maoyan-request
 
+## 0.3.2
+
+### Patch Changes
+
+- 6c89922: add some log
+
 ## 0.3.1
 
 ### Patch Changes
