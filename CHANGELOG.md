@@ -1,5 +1,11 @@
 # maoyan-request
 
+## 0.3.4
+
+### Patch Changes
+
+- 66929aa: 封装 Request
+
 ## 0.3.3
 
 ### Patch Changes
