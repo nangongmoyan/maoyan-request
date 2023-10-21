@@ -1,5 +1,11 @@
 # maoyan-request
 
+## 0.3.3
+
+### Patch Changes
+
+- b608221: change apiInstance
+
 ## 0.3.2
 
 ### Patch Changes
