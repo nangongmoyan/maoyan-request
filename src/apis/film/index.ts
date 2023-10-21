@@ -14,8 +14,7 @@ export const filmApi = {
       method: 'GET',
       url: '/mmdb/movie/v4/list/hot.json',
     })
-    console.log({getHotFilmRlt: rlt})
-    return rlt?.hot ?? []
+    return rlt?.data?.hot ?? []
   },
 
   /**
@@ -30,7 +29,7 @@ export const filmApi = {
       method: 'GET',
       url: '/mmdb/movie/home/list/rt/order/coming.json'
     })
-    return rlt?.coming ?? []
+    return rlt?.data?.coming ?? []
   },
 
   /**
@@ -45,6 +44,6 @@ export const filmApi = {
       method: 'GET',
       url: '/mmdb/movie/v1/list/wish/order/coming.json'
     })
-    return rlt?.coming ?? []
+    return rlt?.data?.coming ?? []
   }
 }

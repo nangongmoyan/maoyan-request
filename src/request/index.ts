@@ -1,22 +1,42 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios"
-import {  RequestConfig } from "./type"
+import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios"
 
 class Request {
-
   /** axios实例 */
   instance: AxiosInstance
+  /** 拦截器对象 */
+  interceptorsObj?: RequestInterceptors<AxiosResponse>
 
   constructor (config: CreateRequestConfig){
     this.instance = axios.create(config)
 
+    this.interceptorsObj = config.interceptors
+
+    // 拦截器执行顺序 接口请求 -> 实例请求 -> 全局请求 -> 实例响应 -> 全局响应 -> 接口响应
+    this.instance.interceptors.request.use(
+      (req: AxiosRequestConfig) => {
+        return req
+      },
+      (error: any) => {
+        return error
+      }
+    )
+
+    /** 使用实例拦截器 */
+    this.instance.interceptors.request.use(
+      this.interceptorsObj?.requestInterceptors,
+      this.interceptorsObj?.requestInterceptorsCatch,
+    )
+    this.instance.interceptors.response.use(
+      this.interceptorsObj?.responseInterceptors,
+      this.interceptorsObj?.responseInterceptorsCatch,
+    )
+
     /** 全局响应拦截器保证最后执行 */
     this.instance.interceptors.response.use(
       (res: AxiosResponse) => {
-        console.log({interceptorsRes: res})
-        return res.data.data
+        return res.data
       },
       (error: any) => {
-        console.log({interceptorsError: error})
         return error
       }
     )
@@ -24,13 +44,19 @@ class Request {
 
   request<T>(config: RequestConfig<T>):Promise<T>{
     return new Promise((resolve, reject) => {
+      /** 如果我们为单个请求设置拦截器，这里使用单个请求的拦截器 */
+      if (config.interceptors?.requestInterceptors) {
+        config = config.interceptors.requestInterceptors(config as any)
+      }
       this.instance
         .request<any, T>(config)
         .then(res => {
-          console.log({requestRes: res})
+          /** 如果我们为单个响应设置拦截器，这里使用单个响应的拦截器 */
+          if (config.interceptors?.responseInterceptors) {
+            res = config.interceptors.responseInterceptors(res)
+          }
           resolve(res)
         }).catch((error: any)=> {
-          console.log({requestError: error})
           reject(error)
         })
     })
