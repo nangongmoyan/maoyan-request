@@ -12,9 +12,13 @@ class Request {
     /** 全局响应拦截器保证最后执行 */
     this.instance.interceptors.response.use(
       (res: AxiosResponse) => {
+        console.log({interceptorsRes: res})
         return res.data.data
       },
-      (error: any) => error
+      (error: any) => {
+        console.log({interceptorsError: error})
+        return error
+      }
     )
   }
 
@@ -23,8 +27,10 @@ class Request {
       this.instance
         .request<any, T>(config)
         .then(res => {
+          console.log({requestRes: res})
           resolve(res)
         }).catch((error: any)=> {
+          console.log({requestError: error})
           reject(error)
         })
     })

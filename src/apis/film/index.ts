@@ -14,6 +14,7 @@ export const filmApi = {
       method: 'GET',
       url: '/mmdb/movie/v4/list/hot.json',
     })
+    console.log({getHotFilmRlt: rlt})
     return rlt?.hot ?? []
   },
 
