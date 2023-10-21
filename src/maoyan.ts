@@ -54,5 +54,4 @@ class MaoYan {
 
 const maoYan = new MaoYan()
 
-console.log({maoYan})
 export { maoYan }
