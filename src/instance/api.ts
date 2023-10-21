@@ -16,6 +16,7 @@ export const apiInstance = new Request(maoYan)
  * @returns {Promise}
  */
 export const apiRequest = <D = any, T = any>(config: ApiRequestConfig<D, T>) => {
+  console.log({config})
   const { method = 'GET' } = config
   if (method === 'get' || method === 'GET') {
     config.params = config.vo
