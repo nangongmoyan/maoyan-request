@@ -6,7 +6,7 @@ interface ApiRequestConfig<T,R> extends RequestConfig<R>{
   vo?: T
 }
 
-export const apiInstance = new Request(maoYan)
+export const apiInstance = new Request(maoYan.configMap.api)
 
 /**
  * @description: 函数的描述
