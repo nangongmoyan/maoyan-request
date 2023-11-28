@@ -1,12 +1,13 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios"
+import { prevHandleRequestReject } from "../utils/request"
 
 class Request {
   /** axios实例 */
   instance: AxiosInstance
   /** 拦截器对象 */
-  interceptorsObj?: RequestInterceptors<AxiosResponse>
+  interceptorsObj?: RequestBase.RequestInterceptors<AxiosResponse>
 
-  constructor (config: CreateRequestConfig){
+  constructor (config: RequestBase.CreateRequestConfig){
     this.instance = axios.create(config)
 
     this.interceptorsObj = config.interceptors
@@ -42,23 +43,28 @@ class Request {
     )
   }
 
-  request<T>(config: RequestConfig<T>):Promise<T>{
+  request<T>(config: RequestBase.RequestConfig<T> & {key: string}):Promise<T>{
     return new Promise((resolve, reject) => {
       /** 如果我们为单个请求设置拦截器，这里使用单个请求的拦截器 */
       if (config.interceptors?.requestInterceptors) {
         config = config.interceptors.requestInterceptors(config as any)
       }
+
+      console.log({config})
+
+      prevHandleRequestReject<T>(config, reject)
+
       this.instance
-        .request<any, T>(config)
-        .then(res => {
-          /** 如果我们为单个响应设置拦截器，这里使用单个响应的拦截器 */
-          if (config.interceptors?.responseInterceptors) {
-            res = config.interceptors.responseInterceptors(res)
-          }
-          resolve(res)
-        }).catch((error: any)=> {
-          reject(error)
-        })
+      .request<any, T>(config)
+      .then(res => {
+        /** 如果我们为单个响应设置拦截器，这里使用单个响应的拦截器 */
+        if (config.interceptors?.responseInterceptors) {
+          res = config.interceptors.responseInterceptors(res)
+        }
+        resolve(res)
+      }).catch((error: any)=> {
+        reject(error)
+      })
     })
   }
 }

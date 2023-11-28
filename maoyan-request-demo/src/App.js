@@ -1,11 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
-import { filmApi } from 'maoyan-request'
-function App () {
+import { filmApi, maoYan } from 'maoyan-request'
+import { useEffect } from 'react'
 
-  filmApi.getHotFilm({}).then(rlt => {
-    console.log({ rlt })
-  })
+
+function App () {
+  useEffect(() => {
+    getData()
+  }, [])
+
+
+  const getData = async () => {
+    try {
+      // let response = await fetch("/mmdb/movie/v4/list/hot.json?uuid=cf7c000b88d3a43ef1cc0b6f2a4f8dcc&channelId=70001&ci=30")
+      // let res = await response.json()
+      const res = await filmApi.celebrityPhotos('681836', {
+      })
+      console.log({ res })
+    } catch (error) {
+      console.log({ error })
+    }
+  }
   return (
     <div className="App">
       <header className="App-header">
