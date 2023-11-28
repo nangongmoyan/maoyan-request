@@ -1,47 +1,36 @@
-import { config } from "./config"
 
 class MaoYan {
-  configMap: ConfigMap 
+  /** 环境 */
+  env: Env
+  /** uuid */
+  uuid: string
+  /** 城市id */
+  cityId: string
+  /** 超时时间 */
   timeout: number
+  /** 渠道id */
+  channelId: string
+  /** config */
+
   constructor(){
-    this.timeout = 20 * 1000
-    this.configMap = {
-      wx:{
-        timeout: this.timeout,
-        baseURL: config.host.wx,
-      },
-      ad:{
-        timeout: this.timeout,
-        baseURL: config.host.ad,
-      },
-      iwx:{
-        timeout: this.timeout,
-        baseURL: config.host.iwx,
-      },
-      api:{
-        timeout: this.timeout,
-        baseURL: config.host.api,
-      },
-      monitor:{
-        timeout: this.timeout,
-        baseURL: config.host.monitor,
-      },
-      vodMovie:{
-        timeout: this.timeout,
-        baseURL: config.host.vodMovie,
-      },
-    }
+    this.cityId = '30';
+    this.env = 'release';
+    this.timeout = 20 * 1000;
+    this.channelId = '70001';
+    this.uuid = crypto.randomUUID()
   }
 
+  setenv(value: Env){
+    this.env = value
+    return this
+  }
+  setUuid(id: string){
+    this.uuid = id
+    return this
+  }
 
-  setConfigMap(server: Server, config: CreateRequestConfig){
-    this.configMap = {
-      ...this.configMap,
-      [server]: {
-        ...this.configMap[server],
-        ...config,
-      }
-    }
+  setCityId (id: string){
+    this.cityId = id
     return this
   }
 
@@ -49,9 +38,17 @@ class MaoYan {
     this.timeout = timeout
     return this
   }
+
+  setChannelId (id: string){
+    this.channelId = id
+    return this
+  }
+
+
 }
 
 
 const maoYan = new MaoYan()
 
+console.log({maoYan})
 export { maoYan }

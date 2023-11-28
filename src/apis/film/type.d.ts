@@ -1,168 +1,23 @@
 /** 电影 */
-namespace Film {
-  /** 枚举信息 */
-  namespace EnumInformation {
-    /** 评分标签枚举 */
-    enum ScoreLabel {
-      NoRate = "暂无评分",
-      MaoYanRate = "猫眼购票评分"
-    }
-
-    /** */
-    enum Color {
-      F03D37 = "#F03D37",
-      The3C9Fe6 = "#3C9FE6",
-    }
-
-    /** */
-    enum Content {
-      BuyTickets = "购票",
-      PrevSale = "预售",
-    }
-
-    /** */
-    export enum Ver {
-      Empty = "",
-      The2D = "2D",
-    }
-  }
-  
-  /** 电影基本信息 */
-  namespace BaseInformation {
-    /** */
-    interface Paging {
-      hasMore: boolean;
-      limit:   number;
-      offset:  number;
-      total:   number;
-    }
-
-    /** 首席奖金 */
-    interface ChiefBonus {
-      chiefAvatarUrl: string; //首席头像
-      chiefName:      string; // 首席名称
-    }
-
-    /** */
-    interface Stid {
-      movieId: number; //
-      stid:    string; //
-    }
-
-    /** */
-    interface SubImageVO {
-      autoCarousel: boolean; //
-      images: {
-        id:  number; //
-        url: string; //
-      }[]; //
-    }
-
-    /** */
-    interface MovieExtraVO {
-      subImageVO: SubImageVO; //
-      wishAnimation?: {
-        url: string; //
-      };
-    }
-
-    /** */
-    interface ShowStateButton {
-      color:       EnumInformation.Color; //
-      content:     EnumInformation.Content; //
-      onlyPreShow: boolean; //
-    }
-
-    interface RecommendAd {
-      adId:       number; //
-      frame:      number; //
-      materialId: number; //
-      movieId:    number; //
-      positionId: number; //
-    }
-
-    /** 电影对象 */
-    interface FilmItem {
-      bingeWatch:       number;
-      boxInfo:          string;
-      cat:              string;
-      civilPubSt:       number;
-      comingTitle:      string;
-      desc:             string;
-      dir:              string;
-      dur:              number;
-      effectShowNum:    number;
-      followst:         number;
-      globalReleased:   boolean;
-      haspromotionTag:  boolean;
-      headLineShow:     boolean;
-      id:               number;
-      img:              string;
-      isRevival:        boolean;
-      late:             boolean;
-      localPubSt:       number;
-      mark:             boolean;
-      mk:               number;
-      movieExtraVO?:    MovieExtraVO;
-      movieType:        number;
-      nm:               string;
-      pn:               number;
-      preSale?:         number;
-      preShow:          boolean;
-      proScore:         number;
-      proScoreNum:      number;
-      pubDate:          number;
-      pubDesc:          string;
-      pubShowNum:       number;
-      recentShowDate:   number;
-      recentShowNum:    number;
-      rt:               Date;
-      sc:               number;
-      scm:              string;
-      scoreLabel:       EnumInformation.ScoreLabel;
-      showCinemaNum:    number;
-      showInfo:         string;
-      showNum:          number;
-      showStateButton?: ShowStateButton;
-      showTimeInfo?:    string;
-      showst:           number;
-      snum:             number;
-      star:             string;
-      totalShowNum?:    number;
-      ver:              EnumInformation.Ver;
-      videoId:          number;
-      videoName?:       string;
-      videourl?:        string;
-      vnum:             number;
-      vodPlay:          boolean;
-      wish:             number;
-      wishst:           number;
-      fra?:             string;
-      frt?:             string;
-      ftime?:           string;
-    }
-
-    /** 响应类型1 */
-    interface FilmResponeseOne {
-      chiefBonus:     { [key: string]: ChiefBonus[] }; //
-      coming:         FilmItem[]; //
-      hot:            FilmItem[]; //
-      movieIds:       number[]; //
-      paging?:        Paging;
-      recommendAds?:  RecommendAd[];
-      schemaUrl:      string; //
-      showLimit:      number; //
-      stid:           string; //
-      stids:          Stid[]; //
-      total:          number; //
-    }
-
-    type FilmsData = BaseInformation.FilmItem[];
+namespace MaoYanFilm {
+  /** 响应类型1 */
+  interface FilmResponeseOne {
+    chiefBonus:     { [key: string]: FilmBase.ChiefBonus[] }; //
+    coming:         FilmBase.FilmItem[]; //
+    hot:            FilmBase.FilmItem[]; //
+    movieIds:       number[]; //
+    paging?:        FilmBase.Paging;
+    recommendAds?:  FilmBase.RecommendAd[];
+    schemaUrl:      string; //
+    showLimit:      number; //
+    stid:           string; //
+    stids:          FilmBase.Stid[]; //
+    total:          number; //
   }
 
   /** 正在热映 */
   namespace Hot {
-    interface Request extends MaoYanService.BaseInformation.Request {
+    interface Request {
       utm_medium?:  string; //
       open?:        string; //
       homepage?:    string; // 
@@ -172,7 +27,7 @@ namespace Film {
 
   /** 即将上映 */
   namespace ComingSoon {
-    interface Request extends MaoYanService.BaseInformation.Request {
+    interface Request {
       uuid?:  string ; //
       extra?: boolean; //
     }
@@ -180,10 +35,252 @@ namespace Film {
 
   /** 待映推荐 */
   namespace ToBeScreened {
-    interface Request extends MaoYanService.BaseInformation.Request {
+    interface Request {
       uuid?:      string ; //
       extra?:     boolean; //
       homepage?:  string; // 
+    }
+  }
+
+  namespace Detail {
+    interface Request {
+      extra?: boolean // 额外数据
+    }
+
+    interface Data {
+      movie: FilmBase.FilmDetail
+    }
+  }
+
+  namespace PlayPlatform {
+    interface Request {
+
+    }
+
+    interface Link {
+      appPlayLink:    string;
+      episodeNum:     number;
+      fieldSource:    string;
+      movieId:        number;
+      platform:       number;
+      playDuration:   number;
+      playLink:       string;
+      playPermission: number;
+    }
+
+    interface PlayPlatformItem {
+      fieldSource:    string;
+      iconUrl:        string;
+      information:    string;
+      isShow:         number;
+      level:          number;
+      links:          Link[];
+      mgeType?:       string;
+      movieId:        number;
+      name:           string;
+      netReleaseTime: Date;
+      platform:       number;
+      type:           number;
+    }
+
+
+    interface Data {
+
+    }
+  }
+
+  namespace FilmPhotos {
+    interface Request {
+      type?: number
+      topPhotoIds?: string
+    }
+
+    interface Photo {
+      approve: number;
+      id:      number;
+      olink:   string;
+      tlink:   string;
+      type:    number;
+    }
+
+    interface PhotosItem {
+      photos: Photo[];
+      size:   number;
+    }
+
+    interface Data {
+
+    }
+  }
+
+  namespace Reputation {
+    interface Request {
+      movieId: number
+    }
+
+    interface Data {
+      content:        string;
+      firstWord:      string;
+      image:          string;
+      jumperUrl:      string;
+      movieBoardType: number;
+      movieRank:      number;
+      secondWord:     string;
+      term:           number;
+      year:           number;
+    }
+  }
+
+  namespace RecommendTag {
+    interface Request {
+      movieId: number
+    }
+    interface Data {
+      content: string;
+      count:   string;
+      left:    string;
+      right:   string;
+    }
+  }
+
+  namespace Distribution {
+    interface Request {
+      movieId: number
+    }
+
+    interface DistributionItem {
+      level:      string;
+      percent:    number;
+      setLevel:   boolean;
+      setPercent: boolean;
+    }
+  
+
+    interface Data {
+      schema:                   string;
+      provinceIdstributionDesc: string;
+      distribution:             DistributionItem[];
+    }
+  }
+
+
+  namespace Celebrities {
+    interface Request {
+
+    }
+
+    interface CelebritieItem {
+      avatar:           string;
+      cnm:              string;
+      cr:               number;
+      desc:             string;
+      enm:              string;
+      id:               number;
+      ocr:              number;
+      roles:            string;
+      showAvatarDetail: boolean;
+      still:            string;
+      voice?:           string;
+  }
+
+  
+    interface Data {
+      total: number;
+      list:  CelebritieItem[][];
+    }
+  }
+
+  namespace HotTopic {
+    interface Request {
+      movieId: number
+    }
+
+    interface ActionList {
+      commentCount: number;
+      guideText:    string;
+      iconUrl:      string;
+      jumpUrl:      string;
+      newIconUrl:   string;
+      tag:          number;
+      title:        string;
+      topicId:      number;
+      type:         number;
+  }
+
+    interface Data {
+      actionList: ActionList[];
+    }
+  }
+
+  namespace CelebrityInfo {
+    interface Request {
+
+    }
+
+    interface Data {
+      aliasName:            string;
+      attachUserId:         number;
+      auth:                 number;
+      avatar:               string;
+      backgroundColor:      string;
+      bgImg:                string;
+      bgImgBackgroundColor: string;
+      birthday:             Date;
+      birthplace:           string;
+      bloodType:            string;
+      boardUrl:             string;
+      cnm:                  string;
+      company:              string;
+      constellation:        string;
+      deathDate:            string;
+      desc:                 string;
+      enm:                  string;
+      fansName:             string;
+      feedbackUrl:          string;
+      followCount:          number;
+      followRank:           number;
+      followState:          number;
+      graduateSchool:       string;
+      height:               number;
+      id:                   number;
+      nation:               string;
+      nationality:          string;
+      photoNum:             number;
+      photos:               string[];
+      present:              number;
+      presentImg:           string;
+      proIntroUrl:          string;
+      publicTitles:         any[];
+      rank:                 number;
+      receiveWord:          string;
+      sendWord:             string;
+      sexy:                 string;
+      signImg:              string;
+      still:                string;
+      sumBox:               number;
+      titleList:            string[];
+      titles:               string;
+      userDailyPresent:     number;
+    }
+  }
+
+  namespace CelebrityPhotos {
+    interface Request {
+
+    }
+
+    interface Photo {
+      approve: number;
+      id:      number;
+      olink:   string;
+      tlink:   string;
+      type:    number;
+  }
+  
+    interface Data {
+      proJumpUrl: string;
+      size:       number;
+      photos:     Photo[];
     }
   }
 }
