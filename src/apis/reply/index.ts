@@ -1,5 +1,5 @@
 import { pathMap } from "../../config"
-import instanceMap from "../../instance"
+import { instanceMap } from "../../instance"
 import { createRequestKey, mapYanTryCatch } from "../../utils/request"
 
 const apiRequest = instanceMap.get('api')?.request!

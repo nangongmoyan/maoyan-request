@@ -29,4 +29,32 @@ namespace  Deploy {
 
     }
   }
+
+
+  namespace City {
+    interface Request {
+
+    }
+
+    enum Rank {
+      A = "A",
+      B = "B",
+      C = "C",
+      D = "D",
+      E = "E",
+      F = "F",
+      S = "S",
+      Z = "Z",
+    }
+
+    interface Data {
+      id:            number;
+      nm:            string;
+      py:            string;
+      rank:          Rank;
+      acronym:       string;
+      chineseFullnm: string;
+      position:      Location;
+    }
+  }
 }
