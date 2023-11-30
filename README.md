@@ -72,19 +72,19 @@ yarn add maoyan-request
     <tr>
       <th key=name>名称</th>
       <th key=type>类型</th>
-      <th key=required width=60>是否必须</th>
+      <th key=required>是否必须</th>
       <th key=default>默认值</th>
       <th key=desc>备注</th>
     </tr>
   </thead>
   <tbody className="ant-table-tbody">
     <tr key=0-0>
-      <td key=0>userGid</td>
+      <td key=0>xxx</td>
       <td key=1>Long</td>
       <td key=2>必须</td>
       <td key=3></td>
       <td key=4>
-        <span style="white-space: pre-wrap">用户Gid</span>
+        <span style="white-space: pre-wrap"></span>
       </td>
     </tr>
   </tbody>
@@ -97,7 +97,7 @@ yarn add maoyan-request
     <tr>
       <th key=name>名称</th>
       <th key=type>类型</th>
-      <th key=required width=60>是否必须</th>
+      <th key=required>是否必须</th>
       <th key=default>默认值</th>
       <th key=desc>备注</th>
     </tr>
@@ -115,7 +115,7 @@ yarn add maoyan-request
     <tr key=0-0>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> boxInfo
+          <span style="color: #8c8a8a"> </span> boxInfo
         </span>
       </td>
       <td key=1>string</td>
@@ -128,7 +128,7 @@ yarn add maoyan-request
     <tr key=0-1>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> civilPubSt
+          <span style="color: #8c8a8a"> </span> civilPubSt
         </span>
       </td>
       <td key=1>number</td>
@@ -141,7 +141,7 @@ yarn add maoyan-request
     <tr key=0-2>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> comingTitle
+          <span style="color: #8c8a8a"> </span> comingTitle
         </span>
       </td>
       <td key=1>string</td>
@@ -154,7 +154,7 @@ yarn add maoyan-request
     <tr key=0-3>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> desc
+          <span style="color: #8c8a8a"> </span> desc
         </span>
       </td>
       <td key=1>string</td>
@@ -167,7 +167,7 @@ yarn add maoyan-request
     <tr key=0-4>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> effectShowNum
+          <span style="color: #8c8a8a"> </span> effectShowNum
         </span>
       </td>
       <td key=1>number</td>
@@ -180,7 +180,7 @@ yarn add maoyan-request
     <tr key=0-5>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> followst
+          <span style="color: #8c8a8a"> </span> followst
         </span>
       </td>
       <td key=1>number</td>
@@ -193,7 +193,7 @@ yarn add maoyan-request
     <tr key=0-6>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> haspromotionTag
+          <span style="color: #8c8a8a"> </span> haspromotionTag
         </span>
       </td>
       <td key=1>boolean</td>
@@ -206,7 +206,7 @@ yarn add maoyan-request
     <tr key=0-7>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> headLineShow
+          <span style="color: #8c8a8a"> </span> headLineShow
         </span>
       </td>
       <td key=1>boolean</td>
@@ -219,7 +219,7 @@ yarn add maoyan-request
     <tr key=0-8>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> isRevival
+          <span style="color: #8c8a8a"> </span> isRevival
         </span>
       </td>
       <td key=1>boolean</td>
@@ -232,7 +232,7 @@ yarn add maoyan-request
     <tr key=0-9>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> late
+          <span style="color: #8c8a8a"> </span> late
         </span>
       </td>
       <td key=1>boolean</td>
@@ -245,7 +245,7 @@ yarn add maoyan-request
     <tr key=0-10>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> localPubSt
+          <span style="color: #8c8a8a"> </span> localPubSt
         </span>
       </td>
       <td key=1>number</td>
@@ -258,7 +258,7 @@ yarn add maoyan-request
     <tr key=0-11>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> mark
+          <span style="color: #8c8a8a"> </span> mark
         </span>
       </td>
       <td key=1>boolean</td>
@@ -271,7 +271,7 @@ yarn add maoyan-request
     <tr key=0-12>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> mk
+          <span style="color: #8c8a8a"> </span> mk
         </span>
       </td>
       <td key=1>number</td>
@@ -284,7 +284,7 @@ yarn add maoyan-request
     <tr key=0-13>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> preSale
+          <span style="color: #8c8a8a"> </span> preSale
         </span>
       </td>
       <td key=1>number</td>
@@ -297,7 +297,7 @@ yarn add maoyan-request
     <tr key=0-14>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> preShow
+          <span style="color: #8c8a8a"> </span> preShow
         </span>
       </td>
       <td key=1>boolean</td>
@@ -310,7 +310,7 @@ yarn add maoyan-request
     <tr key=0-15>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> pubShowNum
+          <span style="color: #8c8a8a"> </span> pubShowNum
         </span>
       </td>
       <td key=1>number</td>
@@ -323,7 +323,7 @@ yarn add maoyan-request
     <tr key=0-16>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> recentShowDate
+          <span style="color: #8c8a8a"> </span> recentShowDate
         </span>
       </td>
       <td key=1>number</td>
@@ -336,7 +336,7 @@ yarn add maoyan-request
     <tr key=0-17>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> recentShowNum
+          <span style="color: #8c8a8a"> </span> recentShowNum
         </span>
       </td>
       <td key=1>number</td>
@@ -349,7 +349,7 @@ yarn add maoyan-request
     <tr key=0-18>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> showCinemaNum
+          <span style="color: #8c8a8a"> </span> showCinemaNum
         </span>
       </td>
       <td key=1>number</td>
@@ -362,7 +362,7 @@ yarn add maoyan-request
     <tr key=0-19>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> showNum
+          <span style="color: #8c8a8a"> </span> showNum
         </span>
       </td>
       <td key=1>number</td>
@@ -375,7 +375,7 @@ yarn add maoyan-request
     <tr key=0-20>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> showTimeInfo
+          <span style="color: #8c8a8a"> </span> showTimeInfo
         </span>
       </td>
       <td key=1>string</td>
@@ -388,7 +388,7 @@ yarn add maoyan-request
     <tr key=0-21>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> totalShowNum
+          <span style="color: #8c8a8a"> </span> totalShowNum
         </span>
       </td>
       <td key=1>number</td>
@@ -401,7 +401,7 @@ yarn add maoyan-request
     <tr key=0-22>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> videoId
+          <span style="color: #8c8a8a"> </span> videoId
         </span>
       </td>
       <td key=1>number</td>
@@ -414,7 +414,7 @@ yarn add maoyan-request
     <tr key=0-23>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> fra
+          <span style="color: #8c8a8a"> </span> fra
         </span>
       </td>
       <td key=1>string</td>
@@ -427,7 +427,7 @@ yarn add maoyan-request
     <tr key=0-24>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> frt
+          <span style="color: #8c8a8a"> </span> frt
         </span>
       </td>
       <td key=1>string</td>
@@ -440,7 +440,7 @@ yarn add maoyan-request
     <tr key=0-25>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> ftime
+          <span style="color: #8c8a8a"> </span> ftime
         </span>
       </td>
       <td key=1>string</td>
@@ -453,7 +453,7 @@ yarn add maoyan-request
     <tr key=0-26>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> showStateButton
+          <span style="color: #8c8a8a"> </span> showStateButton
         </span>
       </td>
       <td key=1>object</td>
@@ -466,7 +466,7 @@ yarn add maoyan-request
     <tr key=0-26-0>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> color
+          <span style="color: #8c8a8a">  </span> color
         </span>
       </td>
       <td key=1>string</td>
@@ -479,7 +479,7 @@ yarn add maoyan-request
     <tr key=0-26-1>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> content
+          <span style="color: #8c8a8a">  </span> content
         </span>
       </td>
       <td key=1>string</td>
@@ -492,7 +492,7 @@ yarn add maoyan-request
     <tr key=0-26-2>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">├─</span> onlyPreShow
+          <span style="color: #8c8a8a">  </span> onlyPreShow
         </span>
       </td>
       <td key=1>boolean</td>
