@@ -4,6 +4,12 @@
 
 ### Minor Changes
 
+- 0eca9c2: init maoyan-request
+
+## 0.1.0
+
+### Minor Changes
+
 - init maoyan-request
 
 ## 0.4.0
