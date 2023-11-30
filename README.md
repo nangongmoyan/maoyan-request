@@ -115,7 +115,7 @@ yarn add maoyan-request
     <tr key=0-0>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> boxInfo
+          boxInfo
         </span>
       </td>
       <td key=1>string</td>
@@ -128,7 +128,7 @@ yarn add maoyan-request
     <tr key=0-1>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> civilPubSt
+          civilPubSt
         </span>
       </td>
       <td key=1>number</td>
@@ -141,7 +141,7 @@ yarn add maoyan-request
     <tr key=0-2>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> comingTitle
+          comingTitle
         </span>
       </td>
       <td key=1>string</td>
@@ -154,7 +154,7 @@ yarn add maoyan-request
     <tr key=0-3>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> desc
+          desc
         </span>
       </td>
       <td key=1>string</td>
@@ -167,7 +167,7 @@ yarn add maoyan-request
     <tr key=0-4>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> effectShowNum
+          effectShowNum
         </span>
       </td>
       <td key=1>number</td>
@@ -180,7 +180,7 @@ yarn add maoyan-request
     <tr key=0-5>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> followst
+          followst
         </span>
       </td>
       <td key=1>number</td>
@@ -193,7 +193,7 @@ yarn add maoyan-request
     <tr key=0-6>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> haspromotionTag
+          haspromotionTag
         </span>
       </td>
       <td key=1>boolean</td>
@@ -206,7 +206,7 @@ yarn add maoyan-request
     <tr key=0-7>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> headLineShow
+          headLineShow
         </span>
       </td>
       <td key=1>boolean</td>
@@ -219,7 +219,7 @@ yarn add maoyan-request
     <tr key=0-8>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> isRevival
+          isRevival
         </span>
       </td>
       <td key=1>boolean</td>
@@ -232,7 +232,7 @@ yarn add maoyan-request
     <tr key=0-9>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> late
+          late
         </span>
       </td>
       <td key=1>boolean</td>
@@ -245,7 +245,7 @@ yarn add maoyan-request
     <tr key=0-10>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> localPubSt
+          localPubSt
         </span>
       </td>
       <td key=1>number</td>
@@ -258,7 +258,7 @@ yarn add maoyan-request
     <tr key=0-11>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> mark
+          mark
         </span>
       </td>
       <td key=1>boolean</td>
@@ -271,7 +271,7 @@ yarn add maoyan-request
     <tr key=0-12>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> mk
+          mk
         </span>
       </td>
       <td key=1>number</td>
@@ -284,7 +284,7 @@ yarn add maoyan-request
     <tr key=0-13>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> preSale
+          preSale
         </span>
       </td>
       <td key=1>number</td>
@@ -297,7 +297,7 @@ yarn add maoyan-request
     <tr key=0-14>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> preShow
+          preShow
         </span>
       </td>
       <td key=1>boolean</td>
@@ -310,7 +310,7 @@ yarn add maoyan-request
     <tr key=0-15>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> pubShowNum
+          pubShowNum
         </span>
       </td>
       <td key=1>number</td>
@@ -323,7 +323,7 @@ yarn add maoyan-request
     <tr key=0-16>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> recentShowDate
+          recentShowDate
         </span>
       </td>
       <td key=1>number</td>
@@ -336,7 +336,7 @@ yarn add maoyan-request
     <tr key=0-17>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> recentShowNum
+          recentShowNum
         </span>
       </td>
       <td key=1>number</td>
@@ -349,7 +349,7 @@ yarn add maoyan-request
     <tr key=0-18>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> showCinemaNum
+          showCinemaNum
         </span>
       </td>
       <td key=1>number</td>
@@ -362,7 +362,7 @@ yarn add maoyan-request
     <tr key=0-19>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> showNum
+          showNum
         </span>
       </td>
       <td key=1>number</td>
@@ -375,7 +375,7 @@ yarn add maoyan-request
     <tr key=0-20>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> showTimeInfo
+          showTimeInfo
         </span>
       </td>
       <td key=1>string</td>
@@ -388,7 +388,7 @@ yarn add maoyan-request
     <tr key=0-21>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> totalShowNum
+          totalShowNum
         </span>
       </td>
       <td key=1>number</td>
@@ -401,7 +401,7 @@ yarn add maoyan-request
     <tr key=0-22>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> videoId
+          videoId
         </span>
       </td>
       <td key=1>number</td>
@@ -414,7 +414,7 @@ yarn add maoyan-request
     <tr key=0-23>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> fra
+          fra
         </span>
       </td>
       <td key=1>string</td>
@@ -427,7 +427,7 @@ yarn add maoyan-request
     <tr key=0-24>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> frt
+          frt
         </span>
       </td>
       <td key=1>string</td>
@@ -440,7 +440,7 @@ yarn add maoyan-request
     <tr key=0-25>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> ftime
+          ftime
         </span>
       </td>
       <td key=1>string</td>
@@ -453,7 +453,7 @@ yarn add maoyan-request
     <tr key=0-26>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a"> </span> showStateButton
+          showStateButton
         </span>
       </td>
       <td key=1>object</td>
@@ -466,7 +466,7 @@ yarn add maoyan-request
     <tr key=0-26-0>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">  </span> color
+          <span style="color: #8c8a8a"> </span> color
         </span>
       </td>
       <td key=1>string</td>
@@ -479,7 +479,7 @@ yarn add maoyan-request
     <tr key=0-26-1>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">  </span> content
+          <span style="color: #8c8a8a"> </span> content
         </span>
       </td>
       <td key=1>string</td>
@@ -492,7 +492,7 @@ yarn add maoyan-request
     <tr key=0-26-2>
       <td key=0>
         <span style="padding-left: 20px">
-          <span style="color: #8c8a8a">  </span> onlyPreShow
+          <span style="color: #8c8a8a"> </span> onlyPreShow
         </span>
       </td>
       <td key=1>boolean</td>
