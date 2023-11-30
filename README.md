@@ -2,7 +2,7 @@
 
 <h1 class="curproject-name"> maoyan-api </h1>
 
- maoyan-request是本人在后续用于学习开发网页、h5、小程序和App端上关于api的一次集成封装，它是本人通过抓包请求后采用typescript实现的api库，此api库仅作为本人学习中使用，切勿使用在其他情况
+ maoyan-request是本人在后续用于学习开发网页、h5、小程序和App端上关于api的一次集成封装，它是本人通过抓包猫眼请求后采用typescript实现的api库，此api库仅作为本人学习中使用，切勿使用在其他情况！！！
 
 ## Installation
 
@@ -16,6 +16,8 @@ npm install maoyan-request
 ```
 yarn add maoyan-request
 ```
+
+## Table of contents
 
 - [公共信息](#公共信息)
     - [**添加统一请求头信息**](#添加统一请求头信息)
