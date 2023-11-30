@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { maoYan } from 'maoyan-request'
 
-maoYan.setenv('empty')
+maoYan.setenv('release')
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

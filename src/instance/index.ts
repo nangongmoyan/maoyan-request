@@ -20,4 +20,4 @@ for( let key in serverConfig[maoYan.env]){
   }) 
 }
 
-export default instanceMap
+export { instanceMap }

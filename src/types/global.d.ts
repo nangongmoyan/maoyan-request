@@ -9,7 +9,7 @@ declare global {
   type ErrorProperty = 'invalidurl'
 
   /** 域名类型 */
-  type Server = 'i'| 'm'| 'wx' | 'ad' | 'iwx' | 'api' | 'verify' |'monitor' | 'passport' | 'vodMovie' 
+  type Server = 'i'| 'm'| 'wx' | 'ad' | 'iwx' | 'api' | 'verify' |'monitor' | 'passport' | 'vodMovie' | 'nangongmoyan'
 
   /** */
   type ApiName = 'deployApi' | 'movieApi' | 'celebrityApi' | 'commentApi' | 'replyApi' | 'cheerfulApi' | 'attractionApi' | 'waterfallApi' | 'carouselApi' | 
@@ -17,11 +17,11 @@ declare global {
 
   type ApiPath  = {
     replyApi: 'replies'
-    deployApi: 'homeTab'
     carouselApi: 'detail'
     attractionApi: 'sights'
     videoApi: 'onlineMovies'
     waterfallApi : 'feedChannel'
+    deployApi: 'homeTab' | 'city'
     cheerfulApi: 'secretRoom' | 'wonderShow' | 'scriptKill'
     cinemaApi: 'filterCinemas' | 'moreCinemas' | 'detail' | 'show'
     commentApi: 'hotTag' | 'tagAndTopic' | 'comments' | 'hotTopic' | 'information'

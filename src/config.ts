@@ -12,6 +12,7 @@ export const serverConfig: ServerConfig = {
     monitor: '',
     passport: '',
     vodMovie: '',
+    nangongmoyan: ''
   },
   release :{
     i: 'https://i.maoyan.com',
@@ -24,11 +25,13 @@ export const serverConfig: ServerConfig = {
     monitor: 'https://monitor.maoyan.com',
     passport: 'https://passport.meituan.com',
     vodMovie: 'https://vod-movie.maoyan.com',
+    nangongmoyan: 'http://s4xfc77q0.hn-bkt.clouddn.com'
   }
 }
 
 export const pathMap: PathMap = {
   deployApi:{
+    city: _ => convertPath('/city'), // 城市数据
     homeTab: _ => convertPath('/sns/common/feed/channel/type'), // 首页Tab
   },
   commentApi:{
