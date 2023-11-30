@@ -1,17 +1,17 @@
 /** 电影 */
-namespace MaoYanFilm {
+namespace MaoYanMovie {
   /** 响应类型1 */
-  interface FilmResponeseOne {
-    chiefBonus:     { [key: string]: FilmBase.ChiefBonus[] }; //
-    coming:         FilmBase.FilmItem[]; //
-    hot:            FilmBase.FilmItem[]; //
+  interface MovieResponeseOne {
+    chiefBonus:     { [key: string]: MovieBase.ChiefBonus[] }; //
+    coming:         MovieBase.MovieItem[]; //
+    hot:            MovieBase.MovieItem[]; //
     movieIds:       number[]; //
-    paging?:        FilmBase.Paging;
-    recommendAds?:  FilmBase.RecommendAd[];
+    paging?:        MovieBase.Paging;
+    recommendAds?:  MovieBase.RecommendAd[];
     schemaUrl:      string; //
     showLimit:      number; //
     stid:           string; //
-    stids:          FilmBase.Stid[]; //
+    stids:          MovieBase.Stid[]; //
     total:          number; //
   }
 
@@ -48,7 +48,7 @@ namespace MaoYanFilm {
     }
 
     interface Data {
-      movie: FilmBase.FilmDetail
+      movie: MovieBase.MovieDetail
     }
   }
 
@@ -89,7 +89,7 @@ namespace MaoYanFilm {
     }
   }
 
-  namespace FilmPhotos {
+  namespace MoviePhotos {
     interface Request {
       type?: number
       topPhotoIds?: string
@@ -190,6 +190,138 @@ namespace MaoYanFilm {
     }
   }
 
+
+  namespace Videos {
+    interface Request {
+      movieId: number // 电影id
+      offset: number // 页数
+      limit: number // 每页数量
+      timeStamp: Date //时间戳
+    }
+
+
+    interface FeedItem extends MovieBase.FeedBaseItem {
+      eventTracking: MovieBase.MovieEnum.EventTracking;
+    }
+
+    interface VideoCommendModuleVOListItem {
+      moduleId:    number;
+      moduleName:  string;
+      schema:      string;
+      videoCount:  number;
+      videoImage?: string;
+      index?:      number;
+    }
+
+    interface Data {
+      feeds:                    FeedItem[];
+      paging:                   Paging;
+      timestamp:                number;
+      videoCommendModuleVOList: VideoCommendModuleVOListItem[];
+    }
+  }
+
+
+  namespace HotVideos {
+    interface Request {
+      movieId: number // 电影id
+      offset: number // 页数
+      limit: number // 每页数量
+    }
+
+    interface HotVideoItem {
+      approve:  number;
+      id:       number;
+      videoUrl: string;
+    }
+
+    interface Image {
+      authorId: number;
+      height:   number;
+      id:       number;
+      sizeType: string;
+      targetId: number;
+      url:      string;
+      width:    number;
+    }
+
+    interface Tag {
+      content: string;
+      url:     string;
+    }
+
+    interface VideoVideo {
+      commentCount: number;
+      id:           number;
+      movieId:      number;
+      playCount:    number;
+      url:          string;
+    }
+
+    interface VideoElement {
+      approve: number;
+      id:      number;
+      image:   Image;
+      tag?:    Tag;
+      video:   VideoVideo;
+    }
+
+  
+    interface Data {
+      hotVideos: HotVideoItem[];
+      name:      string;
+      schema:    string;
+      total:     number;
+      videos:    VideoElement[];
+    }
+  }
+
+  namespace Activity {
+    interface Request {
+
+    }
+    
+    interface Data {
+      hasActivity:  boolean;
+      hasBonus:     boolean;
+      activityInfo: null;
+      bonusInfo:    null;
+    }
+  }
+
+
+  namespace Realtime {
+    interface Request {
+      movieId: number; //影片id
+    }
+
+    interface Data {
+      wish:    number; // 想看
+      watched: number; // 看过
+      snum:    number; // 评分数量
+    }
+  }
+
+
+  namespace WishRecords {
+    interface Request {
+
+    }
+
+    interface WishRecordItem {
+      avatars:   string[];
+      markTime:  string;
+      timeCount: number;
+      timeUnit:  number;
+    }
+
+    interface Data {
+
+    }
+  }
+
+
+
   namespace HotTopic {
     interface Request {
       movieId: number
@@ -212,75 +344,13 @@ namespace MaoYanFilm {
     }
   }
 
-  namespace CelebrityInfo {
-    interface Request {
 
-    }
 
-    interface Data {
-      aliasName:            string;
-      attachUserId:         number;
-      auth:                 number;
-      avatar:               string;
-      backgroundColor:      string;
-      bgImg:                string;
-      bgImgBackgroundColor: string;
-      birthday:             Date;
-      birthplace:           string;
-      bloodType:            string;
-      boardUrl:             string;
-      cnm:                  string;
-      company:              string;
-      constellation:        string;
-      deathDate:            string;
-      desc:                 string;
-      enm:                  string;
-      fansName:             string;
-      feedbackUrl:          string;
-      followCount:          number;
-      followRank:           number;
-      followState:          number;
-      graduateSchool:       string;
-      height:               number;
-      id:                   number;
-      nation:               string;
-      nationality:          string;
-      photoNum:             number;
-      photos:               string[];
-      present:              number;
-      presentImg:           string;
-      proIntroUrl:          string;
-      publicTitles:         any[];
-      rank:                 number;
-      receiveWord:          string;
-      sendWord:             string;
-      sexy:                 string;
-      signImg:              string;
-      still:                string;
-      sumBox:               number;
-      titleList:            string[];
-      titles:               string;
-      userDailyPresent:     number;
-    }
-  }
 
-  namespace CelebrityPhotos {
-    interface Request {
 
-    }
 
-    interface Photo {
-      approve: number;
-      id:      number;
-      olink:   string;
-      tlink:   string;
-      type:    number;
-  }
-  
-    interface Data {
-      proJumpUrl: string;
-      size:       number;
-      photos:     Photo[];
-    }
-  }
+
+
+
+
 }

@@ -1,4 +1,6 @@
 
+import { v4 as uuid } from 'uuid';
+
 class MaoYan {
   /** 环境 */
   env: Env
@@ -17,7 +19,7 @@ class MaoYan {
     this.env = 'release';
     this.timeout = 20 * 1000;
     this.channelId = '70001';
-    this.uuid = crypto.randomUUID()
+    this.uuid = uuid()
   }
 
   setenv(value: Env){

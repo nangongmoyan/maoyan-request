@@ -1,5 +1,5 @@
 {
-  "version": "0.4.0",
+  "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -45,8 +45,17 @@
       "limit": "10 KB"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nangongmoyan/maoyan-request.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nangongmoyan/maoyan-request/issues"
+  },
+  "homepage": "https://github.com/nangongmoyan/maoyan-request#readme",
   "devDependencies": {
     "@size-limit/preset-small-lib": "^9.0.0",
+    "@types/uuid": "^9.0.7",
     "husky": "^8.0.3",
     "size-limit": "^9.0.0",
     "tsdx": "^0.14.1",
@@ -55,6 +64,8 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.26.2",
-    "axios": "^1.2.0-alpha.1"
+    "axios": "^1.2.0-alpha.1",
+    "moyan-utils": "^0.0.20",
+    "uuid": "^9.0.1"
   }
 }
