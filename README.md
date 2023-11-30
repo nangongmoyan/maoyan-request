@@ -1,103 +1,506 @@
-# TSDX User Guide
+ <h1 class="curproject-name"> maoyan-api </h1>
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+ maoyan-request是本人在后续用于学习开发网页、h5、小程序和App端上关于api的一次集成封装，它是本人通过抓包请求后采用typescript实现的api库，此api库仅作为本人学习中使用，切勿使用在其他情况
 
-> This TSDX setup is meant for developing libraries (not apps!) that can be published to NPM. If you’re looking to build a Node app, you could use `ts-node-dev`, plain `ts-node`, or simple `tsc`.
+## Installation
 
-> If you’re new to TypeScript, checkout [this handy cheatsheet](https://devhints.io/typescript)
+### Npm
 
-## Commands
+```
+npm install maoyan-request
+```
+### Yarn
 
-TSDX scaffolds your new library inside `/src`.
-
-To run TSDX, use:
-
-```bash
-npm start # or yarn start
+```
+yarn add maoyan-request
 ```
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+# 公共信息
 
-To do a one-off build, use `npm run build` or `yarn build`.
+### **添加统一请求头信息**
 
-To run tests, use `npm test` or `yarn test`.
+`{uuid}`: 通用唯一识别码
 
-## Configuration
+`{channelId}`: 渠道ID
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
+`{ci/cityId}`: 城市id（不同api需要的字段不一样）
 
-### Jest
+# 业务
 
-Jest tests are set up to run with `npm test` or `yarn test`.
+## movieApi - 电影相关
 
-### Bundle Analysis
+### 正在热映
 
-[`size-limit`](https://github.com/ai/size-limit) is set up to calculate the real cost of your library with `npm run size` and visualize the bundle with `npm run analyze`.
+#### 基本信息
 
-#### Setup Files
+**Url：** https://api.maoyan.com
 
-This is the folder structure we set up for you:
+**Path：** /mmdb/movie/v4/list/hot
 
-```txt
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
-```
+**Method：** GET
 
-### Rollup
+**接口描述：**
+ <pre>
+  <code>  
+  /**
+   * 正在热映
+   * @author nangongmoyan
+   * @param vo
+   * @returns
+   */
+  hot: async(vo: MaoYanMovie.Hot.Request): Promise<MovieBase.MoviesData> => {
+    return mapYanTryCatch<MovieBase.MoviesData>(apiRequest<MaoYanMovie.Hot.Request, MaoYanMovie.MovieResponeseOne>({
+      vo,
+      url: pathMap.movieApi.hot(),
+      key: createRequestKey('movieApi', 'hot'),
+    }).then(rlt => rlt?.data?.hot ?? []))
+  },
+  </code>
+</pre>
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+### 请求参数
+**Headers**
 
-### TypeScript
+| 参数名称  | 参数值  |  是否必须 | 示例  | 备注  |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| Content-Type  |  application/json | 是  |   |   |
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
+**Body**
 
-## Continuous Integration
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th>
+      <th key=type>类型</th>
+      <th key=required width=60>是否必须</th>
+      <th key=default>默认值</th>
+      <th key=desc>备注</th>
+    </tr>
+  </thead>
+  <tbody className="ant-table-tbody">
+    <tr key=0-0>
+      <td key=0>userGid</td>
+      <td key=1>Long</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap">用户Gid</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-### GitHub Actions
+### 返回数据
 
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
-```
-
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th>
+      <th key=type>类型</th>
+      <th key=required width=60>是否必须</th>
+      <th key=default>默认值</th>
+      <th key=desc>备注</th>
+    </tr>
+  </thead>
+  <tbody className="ant-table-tbody">
+    <tr key=0>
+      <td key=0></td>
+      <td key=1>object []</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap">List<MyBankCardListRespVO></span>
+      </td>
+    </tr>
+    <tr key=0-0>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> boxInfo
+        </span>
+      </td>
+      <td key=1>string</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-1>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> civilPubSt
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-2>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> comingTitle
+        </span>
+      </td>
+      <td key=1>string</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-3>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> desc
+        </span>
+      </td>
+      <td key=1>string</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-4>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> effectShowNum
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-5>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> followst
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-6>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> haspromotionTag
+        </span>
+      </td>
+      <td key=1>boolean</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-7>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> headLineShow
+        </span>
+      </td>
+      <td key=1>boolean</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-8>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> isRevival
+        </span>
+      </td>
+      <td key=1>boolean</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-9>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> late
+        </span>
+      </td>
+      <td key=1>boolean</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-10>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> localPubSt
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-11>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> mark
+        </span>
+      </td>
+      <td key=1>boolean</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-12>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> mk
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-13>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> preSale
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>非必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-14>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> preShow
+        </span>
+      </td>
+      <td key=1>boolean</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-15>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> pubShowNum
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-16>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> recentShowDate
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-17>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> recentShowNum
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-18>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> showCinemaNum
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-19>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> showNum
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-20>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> showTimeInfo
+        </span>
+      </td>
+      <td key=1>string</td>
+      <td key=2>非必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-21>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> totalShowNum
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>非必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-22>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> videoId
+        </span>
+      </td>
+      <td key=1>number</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-23>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> fra
+        </span>
+      </td>
+      <td key=1>string</td>
+      <td key=2>非必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-24>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> frt
+        </span>
+      </td>
+      <td key=1>string</td>
+      <td key=2>非必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-25>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> ftime
+        </span>
+      </td>
+      <td key=1>string</td>
+      <td key=2>非必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-26>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> showStateButton
+        </span>
+      </td>
+      <td key=1>object</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+        <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-26-0>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> color
+        </span>
+      </td>
+      <td key=1>string</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+      <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-26-1>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> content
+        </span>
+      </td>
+      <td key=1>string</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+      <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+    <tr key=0-26-2>
+      <td key=0>
+        <span style="padding-left: 20px">
+          <span style="color: #8c8a8a">├─</span> onlyPreShow
+        </span>
+      </td>
+      <td key=1>boolean</td>
+      <td key=2>必须</td>
+      <td key=3></td>
+      <td key=4>
+      <span style="white-space: pre-wrap"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>

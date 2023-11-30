@@ -2,10 +2,6 @@ import { AxiosResponse, CreateAxiosDefaults, AxiosRequestConfig, InternalAxiosRe
 
 declare global {
 
-  interface Crypto {
-    randomUUID: () => string;
-  }
-
   /** api 环境 */
   type Env = 'empty' | 'release'
 
@@ -15,20 +11,62 @@ declare global {
   /** 域名类型 */
   type Server = 'i'| 'm'| 'wx' | 'ad' | 'iwx' | 'api' | 'verify' |'monitor' | 'passport' | 'vodMovie' 
 
-  type ServerPath  = {
-    api : 'hotFilm' | 'comingSoonFilm' | 'toBeScreenedFilm' | 'filmDetail' | 'playPlatform' | 'filmPhotos' | 'reputation' | 'recommendTag' | 'distribution' | 
-    'celebrities' | 'hotTopic' | 'celebrityInfo' | 'celebrityPhotos'
-    passport: 'loginInSmsStep1'
+  /** */
+  type ApiName = 'deployApi' | 'movieApi' | 'celebrityApi' | 'commentApi' | 'replyApi' | 'cheerfulApi' | 'attractionApi' | 'waterfallApi' | 'carouselApi' | 
+    'videoApi' | 'cinemaApi'
+
+  type ApiPath  = {
+    replyApi: 'replies'
+    deployApi: 'homeTab'
+    carouselApi: 'detail'
+    attractionApi: 'sights'
+    videoApi: 'onlineMovies'
+    waterfallApi : 'feedChannel'
+    cheerfulApi: 'secretRoom' | 'wonderShow' | 'scriptKill'
+    cinemaApi: 'filterCinemas' | 'moreCinemas' | 'detail' | 'show'
+    commentApi: 'hotTag' | 'tagAndTopic' | 'comments' | 'hotTopic' | 'information'
+    celebrityApi : 'information' | 'photos' | 'performance' | 'relationship' |  'movies' | 'recentMovies' | 'quantity'
+    movieApi : 'hot' | 'coming' | 'wishComing' | 'detail' | 'playplatform' | 'photos' | 'reputation' |   'recommendTag' | 'distribution' | 'celebrities' | 
+      'videos' | 'hotVideos'  | 'activity' | 'realtime' | 'wishRecords'
+    // passport: 'loginInSmsStep1'
   }
 
-  /** */
-  type ApiName = 'filmApi'  | 'authApi'
+  interface Paging {
+    hasMore:   boolean;
+    limit:     number;
+    offset:    number;
+    timestamp?: number;
+    total:     number;
+  }
 
+
+  interface Location {
+    lng: number // 经度
+    lat: number // 纬度
+  }
   /** 请求相关的 */
   namespace RequestBase {
     interface MaoYanResponse<T>{
-      data: T
+      data:     T
+      cinemas?: T
+      paging?:  Paging;
+      success?: boolean;
+      error?:   MaoYanErrResponse1
+      errMsg?: string | null,
+      message?: string | null,
+      code?: number,
+      ts?: Date
+      attrMaps?: {
+        serverTime: Date
+      };
     }
+
+    interface MaoYanErrResponse1 {
+      code: number
+      message: string 
+      request: string 
+    }
+
     /**  */
     interface MaoYanRequestConfig<T,R> extends RequestConfig<MaoYanResponse<R>>{
       key: string
@@ -75,7 +113,7 @@ declare global {
 
     interface MaoYanErrorProps {
       msg: string 
-      code: string
+      code: number
     }
 
 
@@ -98,12 +136,10 @@ declare global {
 
   /** */
   type PathMap = {
-    [server in Server]: {
-      [path in ServerPath[server]]: (values?: string[]) => string | undefined
+    [api in ApiName]: {
+      [path in ApiPath[api]]: (values?: string[]) => string | undefined
     }
   }
-
-
 
 }
 

@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios"
-import { prevHandleRequestReject } from "../utils/request"
+import { createErrorInformation, createMaoYanError, prevHandleRequestReject } from "../utils/request"
+import { get } from "moyan-utils"
 
 class Request {
   /** axios实例 */
@@ -43,14 +44,12 @@ class Request {
     )
   }
 
-  request<T>(config: RequestBase.RequestConfig<T> & {key: string}):Promise<T>{
+  request<T= any>(config: RequestBase.RequestConfig<T> & {key: string}):Promise<T>{
     return new Promise((resolve, reject) => {
       /** 如果我们为单个请求设置拦截器，这里使用单个请求的拦截器 */
       if (config.interceptors?.requestInterceptors) {
         config = config.interceptors.requestInterceptors(config as any)
       }
-
-      console.log({config})
 
       prevHandleRequestReject<T>(config, reject)
 
@@ -61,7 +60,14 @@ class Request {
         if (config.interceptors?.responseInterceptors) {
           res = config.interceptors.responseInterceptors(res)
         }
-        resolve(res)
+        
+       // @ts-ignore
+        const error = get(res, 'error') as RequestBase.MaoYanErrResponse1
+        if(error ){
+          reject(createMaoYanError(createErrorInformation(error?.code ?? 999999, config.key,  error?.message ?? '')))
+        }else {
+          resolve(res)
+        }
       }).catch((error: any)=> {
         reject(error)
       })

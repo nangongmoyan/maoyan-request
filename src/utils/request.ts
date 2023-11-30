@@ -40,7 +40,7 @@ export function createMaoYanError (error: RequestBase.MaoYanErrorProps){
  * @param otherMsg 
  * @returns `This error occurs in ${key} : ${otherMsg}`
  */
-export function createErrorInfomation(code: string , key: string , otherMsg: string){
+export function createErrorInformation(code: number , key: string , otherMsg: string){
   return {
     code, 
     msg: `This error occurs in ${key} : ${otherMsg}`
@@ -52,6 +52,6 @@ export function createErrorInfomation(code: string , key: string , otherMsg: str
 export function prevHandleRequestReject<T>(config: RequestBase.RequestConfig<T> & {key: string}, reject: (reason?: any) => void){
   const  { invalidurl } = MAOYAN_ERROR
   if(!config.url){
-    reject(createMaoYanError(createErrorInfomation(invalidurl.code, config.key,  invalidurl.msg)))
+    reject(createMaoYanError(createErrorInformation(invalidurl.code, config.key,  invalidurl.msg)))
   }
 }

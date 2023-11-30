@@ -28,30 +28,68 @@ export const serverConfig: ServerConfig = {
 }
 
 export const pathMap: PathMap = {
-  i: {},
-  m: {},
-  wx: {},
-  ad: {},
-  iwx: {},
-  api: {
-    hotFilm: _ => convertPath('/mmdb/movie/v4/list/hot'), // 正在热映  
-    reputation: _ => convertPath('/mmdb/movie/v2/reputation'), // 荣誉  
-    hotTopic: _ => convertPath('/mmdb/support/hotTopic/list'), // 热点话题
+  deployApi:{
+    homeTab: _ => convertPath('/sns/common/feed/channel/type'), // 首页Tab
+  },
+  commentApi:{
+    comments: _ => convertPath('/review/v2/comments'), // 评论列表
+    hotTopic: _ => convertPath('/review/topic/hotList'), // 热议话题
+    information: _ => convertPath('/review/v1/comments/info'), // 评论详情
+    hotTag: _ => convertPath('/review/v2/comments/movie/hotTag'), // 评论标签
+    tagAndTopic: _ => convertPath('/review/v2/comments/movie/tagAndTopic'), // 标签和主题
+  },
+  replyApi:{
+    replies: _ => convertPath('/review/v1/comments/replies'), // 回复列表
+  },
+  movieApi: {
+    hot: _ => convertPath('/mmdb/movie/v4/list/hot'), // 正在热映  
+    realtime: _ => convertPath('/review/realtime/data'), // 购票评分实时
+    reputation: _ => convertPath('/mmdb/movie/v2/reputation'), // 影片荣誉  
+    activity: _ => convertPath('/market/chief/bonus/activity'), // 影片活动  
     recommendTag: _ => convertPath('/mmdb/movie/recommendTag'), // 推荐标签 
-    distribution: _ => convertPath('/mmdb/movie/distribution'), // 电影评分
-    filmDetail: values => convertPath(`/mmdb/movie/v5/${values?.[0]}`, values), // 电影详情
-    comingSoonFilm: _ => convertPath('/mmdb/movie/home/list/rt/order/coming'), // 即将上映  
-    toBeScreenedFilm: _ => convertPath('/mmdb/movie/v1/list/wish/order/coming'), // 待映推荐  
-    celebrityInfo: values => convertPath(`/mmdb/v6/celebrity/${values?.[0]}`, values), // 演员信息
-    filmPhotos: values => convertPath(`/mmdb/movie/photos/${values?.[0]}/list`, values), // 电影照片
-    playPlatform : values => convertPath(`/mmdb/movie/playplatform/${values?.[0]}`, values), // 播放平台 
-    celebrities : values => convertPath(`/mmdb/v9/movie/${values?.[0]}/celebrities`, values), // 电影演职人员 
-    celebrityPhotos : values => convertPath(`/mmdb/v7/celebrity/${values?.[0]}/photos`, values) // 演员照片
+    distribution: _ => convertPath('/mmdb/movie/distribution'), // 影片评分
+    wishRecords: _ => convertPath('/review/movie/wish/records'), // 想看记录列表
+    hotVideos: _ => convertPath('/sns/common/detail/hot/videos'), // 热门短视频
+    coming: _ => convertPath('/mmdb/movie/home/list/rt/order/coming'), // 即将上映 
+    videos: _ => convertPath('/sns/common/video/commend/module/videos'), // 影片视频 
+    wishComing: _ => convertPath('/mmdb/movie/v1/list/wish/order/coming'), // 待映推荐 
+    detail: values => convertPath(`/mmdb/movie/v5/${values?.[0]}`, values), // 影片详情
+    photos: values => convertPath(`/mmdb/movie/photos/${values?.[0]}/list`, values), // 影片照片
+    playplatform : values => convertPath(`/mmdb/movie/playplatform/${values?.[0]}`, values), // 播放平台 
+    celebrities : values => convertPath(`/mmdb/v9/movie/${values?.[0]}/celebrities`, values), // 影片演职人员 
   },
-  verify: {},
-  monitor: {},
-  passport: {
-    loginInSmsStep1: _ => convertPath('/api/v3/account/mobileloginapply')
+  celebrityApi:{
+    information: values => convertPath(`/mmdb/v6/celebrity/${values?.[0]}`, values), // 演员信息
+    photos : values => convertPath(`/mmdb/v7/celebrity/${values?.[0]}/photos`, values), // 演员照片
+    quantity: values => convertPath(`/mmdb/celebrity/${values?.[0]}/quantity`, values), // 演员份量
+    movies: values => convertPath(`/mmdb/celebrity/${values?.[0]}/rank/movies`, values), // 演员电影
+    relationship: values => convertPath(`/mmdb/celebrity/${values?.[0]}/relationship`, values), // 演员关系
+    performance: values => convertPath(`/mmdb/celebrity/${values?.[0]}/work/performance`, values), // 演员表演
+    recentMovies: values => convertPath(`/mmdb/celebrity/${values?.[0]}/v3/recentMovies`, values), // 演员近期电影
   },
-  vodMovie: {},
+  cheerfulApi: {
+    secretRoom:  _ => convertPath('/avitrade/gateway/resk/project/list'), // 密室玩乐
+    scriptKill:  _ => convertPath('/maoyansh/myshow/ajax/movie/scriptKill'), // 沉浸剧场
+    wonderShow:  _ => convertPath('/maoyansh/myshow/ajax/movie/wonderShow'), // 精彩玩乐
+  },
+  attractionApi:{
+    sights:  _ => convertPath('/avitrade/gateway/attractions/homes/sights'), // 景点门票
+  },
+  waterfallApi: {
+    feedChannel: _ => convertPath('/sns/common/feed/channel/v2/list') // 瀑布流
+  },
+  carouselApi: {
+    detail: _ => convertPath('/api/position/detail') // 瀑布流
+  },
+  videoApi: {
+    onlineMovies: _ => convertPath('/vod/video/onlineMovies') //猫眼放映厅
+  },
+  cinemaApi:{
+    moreCinemas: _ => convertPath('/ajax/moreCinemas'), // 影院列表
+    show: _ => convertPath('/mtrade/cinema/cinema/shows'), // 
+    filterCinemas: _ => convertPath('/ajax/filterCinemas'), // 影院筛选条件
+    detail: _ => convertPath('/api/mtrade/mmcs/cinema/v1/cinema'), // 影院详情
+  }
+
+  // hotTopic: _ => convertPath('/mmdb/support/hotTopic/list'), // 热点话题
 }

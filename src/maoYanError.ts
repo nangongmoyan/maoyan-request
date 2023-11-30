@@ -1,5 +1,5 @@
 export class MaoYanError extends Error {
-  code: string;
+  code: number;
   constructor(error: RequestBase.MaoYanErrorProps) {
     super();
     this.message = error.msg;
