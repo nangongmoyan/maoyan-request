@@ -1,5 +1,11 @@
 # maoyan-request
 
+## 0.2.0
+
+### Minor Changes
+
+- c3437c7: init maoyan-request
+
 ## 0.1.0
 
 ### Minor Changes
