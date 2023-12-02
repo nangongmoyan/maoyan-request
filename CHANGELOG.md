@@ -1,5 +1,11 @@
 # maoyan-request
 
+## 0.5.1
+
+### Patch Changes
+
+- 26faffc: change README
+
 ## 0.5.0
 
 ### Minor Changes
