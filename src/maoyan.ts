@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+import { Env } from './types';
 
 class MaoYan {
   /** 环境 */
@@ -52,4 +53,4 @@ class MaoYan {
 const maoYan = new MaoYan()
 
 console.log({maoYan})
-export { maoYan }
+export { maoYan };

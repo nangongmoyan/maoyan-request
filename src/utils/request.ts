@@ -1,5 +1,6 @@
 import { MAOYAN_ERROR } from "../const/error"
 import { MaoYanError } from "../maoYanError"
+import { ApiName, MaoYanErrorProps } from "../types"
 
 /**
  * 封装trycatch
@@ -29,7 +30,7 @@ export function createRequestKey (apiName: ApiName, childName: string){
  * @param error 
  * @returns 
  */
-export function createMaoYanError (error: RequestBase.MaoYanErrorProps){
+export function createMaoYanError (error: MaoYanErrorProps){
   return new MaoYanError(error)
 }
 
@@ -49,7 +50,7 @@ export function createErrorInformation(code: number , key: string , otherMsg: st
 
 
 
-export function prevHandleRequestReject<T>(config: RequestBase.RequestConfig<T> & {key: string}, reject: (reason?: any) => void){
+export function prevHandleRequestReject<T>(config: RequestConfig<T> & {key: string}, reject: (reason?: any) => void){
   const  { invalidurl } = MAOYAN_ERROR
   if(!config.url){
     reject(createMaoYanError(createErrorInformation(invalidurl.code, config.key,  invalidurl.msg)))

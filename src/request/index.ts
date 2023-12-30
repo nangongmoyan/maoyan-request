@@ -1,6 +1,6 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios"
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios"
+import { MaoYanErrResponse1 } from "../types"
 import { createErrorInformation, createMaoYanError, prevHandleRequestReject } from "../utils/request"
-import { get } from "moyan-utils"
 
 class Request {
   /** axios实例 */
@@ -8,10 +8,10 @@ class Request {
   /** 存放取消请求控制器Map */
   abortControllerMap: Map<string, AbortController>
   /** 拦截器对象 */
-  interceptorsObj?: RequestBase.RequestInterceptors<AxiosResponse>
+  interceptorsObj?: RequestInterceptors<AxiosResponse>
 
 
-  constructor (config: RequestBase.CreateRequestConfig){
+  constructor (config: CreateRequestConfig){
     this.instance = axios.create(config)
 
     // 初始化存放取消请求控制器Map
@@ -55,7 +55,7 @@ class Request {
     )
   }
 
-  request<T= any>(config: RequestBase.RequestConfig<T> & {key: string}):Promise<T>{
+  request<T= any>(config: RequestConfig<T> & {key: string}):Promise<T>{
     return new Promise((resolve, reject) => {
       /** 如果我们为单个请求设置拦截器，这里使用单个请求的拦截器 */
       if (config.interceptors?.requestInterceptors) {
@@ -73,7 +73,7 @@ class Request {
         }
         
        // @ts-ignore
-        const error = get(res, 'error') as RequestBase.MaoYanErrResponse1
+        const error = res?.error as MaoYanErrResponse1
         if(error ){
           reject(createMaoYanError(createErrorInformation(error?.code ?? 999999, config.key,  error?.message ?? '')))
         }else {

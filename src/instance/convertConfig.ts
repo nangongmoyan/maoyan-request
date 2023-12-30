@@ -1,8 +1,9 @@
 import { serverConfig } from "../config"
 import { maoYan } from "../maoyan"
+import { Server } from "../types"
 import { removeUndefinedField } from "../utils/object"
 
-export const convertRequestConfig = <D= any, T= any>(config: RequestBase.MaoYanRequestConfig<D, T>, server: Server ) => {
+export const convertRequestConfig = <D= any, T= any>(config: MaoYanRequestConfig<D, T>, server: Server ) => {
 
   const { method = 'GET', needProperty = {}, cityProperty = 'ci', suffix = '.json' } = config
 

@@ -1,3 +1,4 @@
+import { PathMap, ServerConfig } from "./types"
 import { convertPath } from "./utils/path"
 
 export const serverConfig: ServerConfig = {
